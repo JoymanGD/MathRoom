@@ -10,7 +10,7 @@ namespace MathRoom
 {
     public class MathRoom : Singleton<MathRoom>
     {
-        private GraphicsDeviceManager Graphics;
+        public GraphicsDeviceManager Graphics;
         private SpriteBatch SpriteBatch;
         private DefaultSceneManager SceneManager;
 

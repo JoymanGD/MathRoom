@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "c0UaUmkLMW2pIoLKkmrYAym0oYUvsKaar3BF43Kk2O28ISGvI+bVfY1sb4aepWR/ENUrDObqzD/wGx3KTXxOYA==",
+  "dgSpecHash": "7S2Vl6D8fX1GKG2Uop7pSHHiiiCcCcZxALbAgvMkL91Ex2puQTHIhD0fo6d8jAfhQq6xKprBmuSbYfp5am0wKA==",
   "success": true,
-  "projectFilePath": "E:\\Profiles\\v.kruglyakov\\Desktop\\MathRoom\\MathRoom.csproj",
+  "projectFilePath": "C:\\Users\\UserName\\Desktop\\MathRoom\\MathRoom.csproj",
   "expectedPackageFiles": [
-    "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
-    "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.extended\\3.8.0\\monogame.extended.3.8.0.nupkg.sha512",
-    "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.extended.graphics\\3.8.0\\monogame.extended.graphics.3.8.0.nupkg.sha512",
-    "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512",
-    "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+    "C:\\Users\\UserName\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\UserName\\.nuget\\packages\\monogame.extended\\3.8.0\\monogame.extended.3.8.0.nupkg.sha512",
+    "C:\\Users\\UserName\\.nuget\\packages\\monogame.extended.graphics\\3.8.0\\monogame.extended.graphics.3.8.0.nupkg.sha512",
+    "C:\\Users\\UserName\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\UserName\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }
