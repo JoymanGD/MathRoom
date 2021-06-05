@@ -2,7 +2,9 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using MathRoom.Helpers;
 
 namespace MathRoom.Scenes.SceneManager
 {
@@ -39,10 +41,19 @@ namespace MathRoom.Scenes.SceneManager
 
         public void Update(GameTime _gameTime){
             CurrentScene?.Update(_gameTime);
+
+            if(Keyboard.GetState().IsKeyDown(Keys.Right)){
+                NextScene();
+            }
+            else if(Keyboard.GetState().IsKeyDown(Keys.Left)){
+                PreviousScene();
+            }
         }
 
         public void Draw(SpriteBatch _spriteBatch){
             CurrentScene?.Draw(_spriteBatch);
+
+            Drawer.DrawString(_spriteBatch, "Current scene: " + CurrentScene.Name + "\nNext scene: RightArrow\nPrevious scene: LeftArrow", new Vector2(20,20), Color.Red);
         }
 
         public void AddScene(IScene _scene){
@@ -67,6 +78,16 @@ namespace MathRoom.Scenes.SceneManager
             if(CurrentScene == null) return;
             
             var nextID = CurrentScene.ID + 1;
+
+            var nextScene = Scenes.FirstOrDefault(x => x.Value.ID == nextID).Value;
+
+            if(nextScene != null) CurrentScene = nextScene;
+        }
+
+        public void PreviousScene(){
+            if(CurrentScene == null) return;
+            
+            var nextID = CurrentScene.ID - 1;
 
             var nextScene = Scenes.FirstOrDefault(x => x.Value.ID == nextID).Value;
 

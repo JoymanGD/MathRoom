@@ -5,6 +5,7 @@ using MathRoom.Scenes.SceneManager;
 using MathRoom.Scenes;
 using System.Collections.Generic;
 using MathRoom.Patterns;
+using MathRoom.Helpers;
 
 namespace MathRoom
 {
@@ -21,11 +22,18 @@ namespace MathRoom
             IsMouseVisible = true;
         }
 
+        protected override void LoadContent()
+        {
+            Drawer.Initialize(Content);
+            base.LoadContent();
+        }
+
         protected override void Initialize()
         {
             // set new scenes here
             SceneManager = new DefaultSceneManager(new List<IScene>{ 
-                new DoublePendulum()
+                new DoublePendulum(),
+                new Life()
             });
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);

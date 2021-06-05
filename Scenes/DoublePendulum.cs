@@ -10,10 +10,11 @@ namespace MathRoom.Scenes
     public class DoublePendulum : IScene
     {
         public int ID { get; set; }
+        public string Name { get; } = "Double pendulum";
         private GraphicsDevice GraphicsDevice;
         private GraphicsDeviceManager Graphics;
         private SpriteBatch TrailSpriteBatch;
-        private RenderTarget2D RenderTarget;
+        private RenderTarget2D TrailRenderTarget;
 
         #region MathPart
         //scalable
@@ -22,9 +23,9 @@ namespace MathRoom.Scenes
         Vector2 p0 = new Vector2(400,200);
         float l1 = 100;
         float l2 = 100;
-        float m1 = 10;
+        float m1 = 15;
         float m2 = 10;
-        float g = 6;
+        float g = 10;
         
         //computable
         float a1_v;
@@ -36,6 +37,7 @@ namespace MathRoom.Scenes
         Vector2 p_cash;
         int width, height;
 
+        //constant
         const float speedModifier = 0.05f;
         #endregion
 
@@ -47,7 +49,7 @@ namespace MathRoom.Scenes
             TrailSpriteBatch = new SpriteBatch(GraphicsDevice);
             width = Graphics.PreferredBackBufferWidth;
             height = Graphics.PreferredBackBufferHeight;
-            RenderTarget = GetRenderTarget();
+            TrailRenderTarget = GetRenderTarget();
         }
 
         RenderTarget2D GetRenderTarget(){
@@ -71,10 +73,11 @@ namespace MathRoom.Scenes
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            GraphicsDevice.SetRenderTarget(RenderTarget);
-                _spriteBatch.Begin();
+            GraphicsDevice.SetRenderTarget(TrailRenderTarget);
+                _spriteBatch.Begin(blendState: BlendState.AlphaBlend);
                     if(p_cash != Vector2.Zero){
-                        _spriteBatch.DrawLine(p_cash, p2, Color.LightBlue, 1,1);                        
+                        _spriteBatch.DrawLine(p_cash, p2, Color.LightBlue * .2f, 1,1);
+                        //_spriteBatch.DrawPoint(p_cash, Color.LightBlue, 1,1);
                     }
                     p_cash = p2;                    
                 _spriteBatch.End();
@@ -83,7 +86,7 @@ namespace MathRoom.Scenes
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
-                _spriteBatch.Draw(RenderTarget, new Rectangle(0,0,width, height), Color.White);
+                _spriteBatch.Draw(TrailRenderTarget, new Rectangle(0,0,width, height), Color.White);
             _spriteBatch.End();
                     
             _spriteBatch.Begin();
@@ -104,7 +107,19 @@ namespace MathRoom.Scenes
         private float Cos(float _value){
             return MathF.Cos(_value);
         }
+        
+        public void Reset()
+        {
+            a1_v = default;
+            a2_v = default;
+            a1_a = default;
+            a2_a = default;
+            p1 = default;
+            p2 = default;
+            p_cash = default;
+        }
 
         public void Dispose(){}
+
     }
 }

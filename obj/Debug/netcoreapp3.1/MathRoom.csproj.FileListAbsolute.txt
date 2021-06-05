@@ -50,3 +50,4 @@ C:\Users\UserName\Desktop\MathRoom\obj\Debug\netcoreapp3.1\MathRoom.csproj.CopyC
 C:\Users\UserName\Desktop\MathRoom\obj\Debug\netcoreapp3.1\MathRoom.dll
 C:\Users\UserName\Desktop\MathRoom\obj\Debug\netcoreapp3.1\MathRoom.pdb
 C:\Users\UserName\Desktop\MathRoom\obj\Debug\netcoreapp3.1\MathRoom.genruntimeconfig.cache
+C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\Content\Fonts\Default.xnb
