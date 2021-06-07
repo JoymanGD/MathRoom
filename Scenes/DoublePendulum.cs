@@ -18,8 +18,6 @@ namespace MathRoom.Scenes
 
         #region MathPart
         //scalable
-        float a1 = MathF.PI/3;
-        float a2 = MathF.PI/3;
         Vector2 p0 = new Vector2(400,200);
         float l1 = 100;
         float l2 = 100;
@@ -28,6 +26,8 @@ namespace MathRoom.Scenes
         float g = 10;
         
         //computable
+        float a1;
+        float a2;
         float a1_v;
         float a2_v;
         float a1_a;
@@ -50,12 +50,23 @@ namespace MathRoom.Scenes
             width = Graphics.PreferredBackBufferWidth;
             height = Graphics.PreferredBackBufferHeight;
             TrailRenderTarget = GetRenderTarget();
+            RandomizeAngles();
         }
 
         RenderTarget2D GetRenderTarget(){
             var rt = new RenderTarget2D(GraphicsDevice, width, height, false, SurfaceFormat.Vector4, DepthFormat.Depth24, 0, RenderTargetUsage.PreserveContents);
             
             return rt;
+        }
+
+        float GetRandomAngle(){
+            Random random = new Random();
+            return random.NextAngle();
+        }
+
+        void RandomizeAngles(){
+            a1 = GetRandomAngle();
+            a2 = GetRandomAngle();
         }
 
         public void Update(GameTime _gameTime)
@@ -79,7 +90,7 @@ namespace MathRoom.Scenes
                         _spriteBatch.DrawLine(p_cash, p2, Color.LightBlue * .2f, 1,1);
                         //_spriteBatch.DrawPoint(p_cash, Color.LightBlue, 1,1);
                     }
-                    p_cash = p2;                    
+                    p_cash = p2;
                 _spriteBatch.End();
             GraphicsDevice.SetRenderTarget(null);
             
@@ -110,13 +121,17 @@ namespace MathRoom.Scenes
         
         public void Reset()
         {
-            a1_v = default;
-            a2_v = default;
-            a1_a = default;
-            a2_a = default;
-            p1 = default;
-            p2 = default;
-            p_cash = default;
+            a1_v = 0;
+            a2_v = 0;
+            a1_a = 0;
+            a2_a = 0;
+            p_cash = Vector2.Zero;
+            RandomizeAngles();
+            p1 = new Vector2(p0.X + l1 * MathF.Sin(a1), p0.Y + l1 * MathF.Cos(a1));
+            p2 = new Vector2(p1.X + l2 * MathF.Sin(a2), p1.Y + l2 * MathF.Cos(a2));
+            GraphicsDevice.SetRenderTarget(TrailRenderTarget);
+            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.SetRenderTarget(null);
         }
 
         public void Dispose(){}

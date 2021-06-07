@@ -121,7 +121,7 @@ namespace MathRoom.Scenes
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            FillGridRandomly();
         }
     }
 }

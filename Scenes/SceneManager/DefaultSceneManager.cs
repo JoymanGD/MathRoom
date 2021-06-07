@@ -48,12 +48,15 @@ namespace MathRoom.Scenes.SceneManager
             else if(Keyboard.GetState().IsKeyDown(Keys.Left)){
                 PreviousScene();
             }
+            else if(Keyboard.GetState().IsKeyDown(Keys.R)){
+                CurrentScene.Reset();
+            }
         }
 
         public void Draw(SpriteBatch _spriteBatch){
             CurrentScene?.Draw(_spriteBatch);
 
-            Drawer.DrawString(_spriteBatch, "Current scene: " + CurrentScene.Name + "\nNext scene: RightArrow\nPrevious scene: LeftArrow", new Vector2(20,20), Color.Red);
+            Drawer.DrawString(_spriteBatch, "Current scene: " + CurrentScene.Name + "\nNext scene: RightArrow\nPrevious scene: LeftArrow\nReset: R", new Vector2(20,20), Color.Red);
         }
 
         public void AddScene(IScene _scene){
