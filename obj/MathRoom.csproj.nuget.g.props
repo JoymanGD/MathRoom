@@ -5,13 +5,12 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\UserName\.nuget\packages\;C:\Program Files\dotnet\sdk\NuGetFallbackFolder</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">E:\Profiles\v.kruglyakov\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.9.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.7.1</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\UserName\.nuget\packages\" />
-    <SourceRoot Include="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\" />
+    <SourceRoot Include="$([MSBuild]::EnsureTrailingSlash($(NuGetPackageFolders)))" />
   </ItemGroup>
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -21,7 +20,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>CppNet.dll</Link>
     </Content>
@@ -29,7 +27,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>SharpDX.D3DCompiler.dll</Link>
     </Content>
@@ -37,7 +34,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>SharpDX.D3DCompiler.xml</Link>
     </Content>
@@ -45,7 +41,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>SharpDX.dll</Link>
     </Content>
@@ -53,7 +48,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>SharpDX.xml</Link>
     </Content>
@@ -61,7 +55,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>libmojoshader_64.dll</Link>
     </Content>
@@ -69,7 +62,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>mgfxc.deps.json</Link>
     </Content>
@@ -77,7 +69,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>mgfxc.dll</Link>
     </Content>
@@ -85,7 +76,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>mgfxc.exe</Link>
     </Content>
@@ -93,7 +83,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>mgfxc.pdb</Link>
     </Content>
@@ -101,7 +90,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>mgfxc.runtimeconfig.dev.json</Link>
     </Content>
@@ -109,7 +97,6 @@
       <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
       <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
       <Private>False</Private>
       <Link>mgfxc.runtimeconfig.json</Link>
     </Content>
@@ -118,6 +105,7 @@
     <Import Project="$(NuGetPackageRoot)monogame.content.builder.task\3.8.0.1641\build\MonoGame.Content.Builder.Task.props" Condition="Exists('$(NuGetPackageRoot)monogame.content.builder.task\3.8.0.1641\build\MonoGame.Content.Builder.Task.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMonoGame_Content_Builder_Task Condition=" '$(PkgMonoGame_Content_Builder_Task)' == '' ">C:\Users\UserName\.nuget\packages\monogame.content.builder.task\3.8.0.1641</PkgMonoGame_Content_Builder_Task>
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">E:\Profiles\v.kruglyakov\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgMonoGame_Content_Builder_Task Condition=" '$(PkgMonoGame_Content_Builder_Task)' == '' ">E:\Profiles\v.kruglyakov\.nuget\packages\monogame.content.builder.task\3.8.0.1641</PkgMonoGame_Content_Builder_Task>
   </PropertyGroup>
 </Project>
