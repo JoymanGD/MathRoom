@@ -44,7 +44,7 @@ namespace MathRoom.Scenes
             
             FillFrontendField(FrontendField);
             FillBackendField(BackendField);
-            SetPlayer(FrontendField, CurrentPlayer);
+            SetPlayer(FrontendField, CurrentPlayer); 
             
             base.Initialize();
         }
