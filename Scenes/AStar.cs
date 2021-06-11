@@ -28,6 +28,7 @@ namespace MathRoom.Scenes
 
         public override void Initialize()
         {
+            AdditionalInfo = "Move to point: LMB";
             GraphicsDevice = MathRoom.Instance.GraphicsDevice;
             Graphics = MathRoom.Instance.Graphics;
             Tweener = new Tweener();
