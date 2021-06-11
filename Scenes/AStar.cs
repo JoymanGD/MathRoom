@@ -36,7 +36,7 @@ namespace MathRoom.Scenes
             Resolution = Graphics.PreferredBackBufferHeight/ (int)(Height*1.1f);
             Offset = new Point(Graphics.PreferredBackBufferWidth/2 - Width*Resolution/2, Graphics.PreferredBackBufferHeight/2 - Height*Resolution/2);
             
-            CurrentPlayer = new Player(Point.Zero, 8);
+            CurrentPlayer = new Player(Point.Zero, 12);
 
             FrontendField = new int[Width, Height];
             BackendField = new BoundingRectangle[Width, Height];
