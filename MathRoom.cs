@@ -35,6 +35,7 @@ namespace MathRoom
             SceneManager.AddScene<DoublePendulum>();
             SceneManager.AddScene<Life>();
             SceneManager.AddScene<FractalTree>();
+            SceneManager.AddScene<AStar>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 

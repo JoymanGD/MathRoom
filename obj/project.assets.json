@@ -416,6 +416,18 @@
           "lib/netstandard2.0/MonoGame.Extended.Input.dll": {}
         }
       },
+      "MonoGame.Extended.Tweening/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "MonoGame.Extended": "3.8.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MonoGame.Extended.Tweening.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MonoGame.Extended.Tweening.dll": {}
+        }
+      },
       "MonoGame.Framework.WindowsDX/3.8.0.1641": {
         "type": "package",
         "dependencies": {
@@ -2903,6 +2915,18 @@
         "lib/netstandard2.0/MonoGame.Extended.Input.dll",
         "monogame.extended.input.3.8.0.nupkg.sha512",
         "monogame.extended.input.nuspec"
+      ]
+    },
+    "MonoGame.Extended.Tweening/3.8.0": {
+      "sha512": "RLKhmcPUVcdh5aXcMMUpww84i0Ed/upoTAljmU2vKWakbxKFljLic5hgKA6fNfFCVVn0Y1lqgVomEZNuaCkeWw==",
+      "type": "package",
+      "path": "monogame.extended.tweening/3.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MonoGame.Extended.Tweening.dll",
+        "monogame.extended.tweening.3.8.0.nupkg.sha512",
+        "monogame.extended.tweening.nuspec"
       ]
     },
     "MonoGame.Framework.WindowsDX/3.8.0.1641": {
@@ -7527,6 +7551,7 @@
       "MonoGame.Extended >= 3.8.0",
       "MonoGame.Extended.Graphics >= 3.8.0",
       "MonoGame.Extended.Input >= 3.8.0",
+      "MonoGame.Extended.Tweening >= 3.8.0",
       "MonoGame.Framework.WindowsDX >= 3.8.0.1641"
     ]
   },
@@ -7537,11 +7562,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\UserName\\Desktop\\MathRoom\\MathRoom.csproj",
+      "projectUniqueName": "C:\\Users\\UserName\\Desktop\\MathRoom\\MathRoom.csproj",
       "projectName": "MathRoom",
-      "projectPath": "c:\\Users\\UserName\\Desktop\\MathRoom\\MathRoom.csproj",
+      "projectPath": "C:\\Users\\UserName\\Desktop\\MathRoom\\MathRoom.csproj",
       "packagesPath": "C:\\Users\\UserName\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\UserName\\Desktop\\MathRoom\\obj\\",
+      "outputPath": "C:\\Users\\UserName\\Desktop\\MathRoom\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -7586,6 +7611,10 @@
             "version": "[3.8.0, )"
           },
           "MonoGame.Extended.Input": {
+            "target": "Package",
+            "version": "[3.8.0, )"
+          },
+          "MonoGame.Extended.Tweening": {
             "target": "Package",
             "version": "[3.8.0, )"
           },

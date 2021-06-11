@@ -80,3 +80,4 @@ C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\rhel-x64\nat
 C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
 C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
 C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
+C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\MonoGame.Extended.Tweening.dll

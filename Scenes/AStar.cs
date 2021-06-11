@@ -1,154 +1,248 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using MonoGame.Extended;
+using MonoGame.Extended.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MathRoom.Helpers.Structs;
-using System.Collections.ObjectModel;
-using System.Linq;
+using MathRoom.Helpers.PathFinding;
+using MonoGame.Extended.Tweening;
 
 namespace MathRoom.Scenes
 {
     public class AStar : IScene
     {
         GraphicsDevice GraphicsDevice;
+        GraphicsDeviceManager Graphics;
+        Tweener Tweener;
+        const int Width = 30;
+        const int Height = 30;
+        int Resolution;
+        Player CurrentPlayer;
+        int[,] FrontendField;
+        BoundingRectangle[,] BackendField;
+        Point Offset;
+        List<Point> Path;
 
         public AStar(string _name, int _id) : base(_name, _id){}
 
         public override void Initialize()
         {
             GraphicsDevice = MathRoom.Instance.GraphicsDevice;
+            Graphics = MathRoom.Instance.Graphics;
+            Tweener = new Tweener();
+
+            Resolution = Graphics.PreferredBackBufferHeight/ (int)(Height*1.1f);
+            Offset = new Point(Graphics.PreferredBackBufferWidth/2 - Width*Resolution/2, Graphics.PreferredBackBufferHeight/2 - Height*Resolution/2);
+            
+            CurrentPlayer = new Player(Point.Zero, 8);
+
+            FrontendField = new int[Width, Height];
+            BackendField = new BoundingRectangle[Width, Height];
+            Path = new List<Point>();
+            
+            FillFrontendField(FrontendField);
+            FillBackendField(BackendField);
+            SetPlayer(FrontendField, CurrentPlayer);
             
             base.Initialize();
         }
 
         public override void Update(GameTime _gameTime)
         {
-            
+            Tweener.Update(_gameTime.GetElapsedSeconds());
+            UpdateField(BackendField, FrontendField, CurrentPlayer);
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
         {
             GraphicsDevice.Clear(Color.Black);
-            _spriteBatch.Begin();
 
+            _spriteBatch.Begin();
+                DrawFrontendField(FrontendField, _spriteBatch);
+                DrawBackendField(BackendField, FrontendField, _spriteBatch);
+                DrawPath(Path, _spriteBatch);
+                DrawPlayer(CurrentPlayer, _spriteBatch);
             _spriteBatch.End();
         }
 
         public override void Reset()
         {
-            
-        }
-    }
-
-    public static class PathFinder{
-        class PathNode{
-            public Point Position { get; private set; }
-            public int G { get; private set; } //distance to start
-            public int H { get; private set; } //distance to aim
-            public int F { get { return G + H; }} //from start to aim
-            public PathNode CameFrom { get; private set; }
-
-            public PathNode(Point _position, int _g, int _h, PathNode _cameFrom){
-                Position = _position;
-                G = _g;
-                H = _h;
-                CameFrom = _cameFrom;
-            }
-
-            public void SetG(int _g){
-                G = _g;
-            }
-
-            public void SetCameFrom(PathNode _cameFrom){
-                CameFrom = _cameFrom;
-            }
+            FillFrontendField(FrontendField);
+            Tweener.CancelAll();
+            SetPlayer(FrontendField, CurrentPlayer);
+            Path.Clear();
         }
 
-        public static List<Point> FindPath(int[,] _field, Point _start, Point _goal){
-            var closedSet = new Collection<PathNode>();
-            var openSet = new Collection<PathNode>();
-            
-            PathNode startNode = new PathNode(_start, 0, GetPointsPathLength(_start, _goal), null);
-            
-            openSet.Add(startNode);
-            
-            while (openSet.Count > 0)
-            {
-                var currentNode = openSet.OrderBy(node => node.F).First();
-
-                if (currentNode.Position == _goal)
-                    return GetPathToNode(currentNode);
-
-                openSet.Remove(currentNode);
-                closedSet.Add(currentNode);
-                
-                foreach (var neighbourNode in GetNeighbours(currentNode, _goal, _field))
+        private void UpdateField(BoundingRectangle[,] _backendField, int[,] _frontendField, Player _player){
+            var mouseState = MouseExtended.GetState();
+            if(mouseState.WasButtonJustUp(MouseButton.Left)){
+                for (var i = 0; i < Width; i++)
                 {
-                    if (closedSet.Count(node => node.Position == neighbourNode.Position) > 0)
-                        continue;
-                    
-                    var openNode = openSet.FirstOrDefault(node => node.Position == neighbourNode.Position);
-                    
-                    if (openNode == null)
-                        openSet.Add(neighbourNode);
-                    else if (openNode.G > neighbourNode.G)
+                    for (var j = 0; j < Height; j++)
                     {
-                        openNode.SetCameFrom(currentNode);
-                        openNode.SetG(neighbourNode.G);
+                        if(_frontendField[i, j] == 0) continue;
+
+                        var rect = _backendField[i, j];
+
+                        if(rect.Contains(mouseState.Position)){
+                            Path.Clear();
+                            Path = PathFinder.FindPath(_frontendField, _player.Position.ToPoint(), new Point(i, j));
+                            MoveAlongThePath(_player, Path, Tweener);
+                            return;
+                        }
                     }
                 }
             }
-            return null;
         }
 
-        private static Collection<PathNode> GetNeighbours(PathNode _node, Point _goal, int[,] _field){
-            Collection<PathNode> neighbours = new Collection<PathNode>();
-            
-            Point[] neighboursPoints = new Point[]{
-                new Point(_node.Position.X + 1, _node.Position.Y + 1),
-                new Point(_node.Position.X + 1, _node.Position.Y - 1),
-                new Point(_node.Position.X - 1, _node.Position.Y + 1),
-                new Point(_node.Position.X - 1, _node.Position.Y - 1)
-            };
+        private void MoveAlongThePath(Player _player, List<Point> _path, Tweener _tweener){
+            _tweener.CancelAll();
+            MoveToNextPoint(_player, _path, _tweener);
+        }
 
-            foreach (var point in neighboursPoints)
+        private void MoveToNextPoint(Player _player, List<Point> _path, Tweener _tweener){
+            if(_path.Count > 1){
+                _path.RemoveAt(0);
+                Vector2 first = _path.First().ToVector2();
+                _tweener.TweenTo(_player,  p=> p.Position, first, 2/_player.Speed).Easing(EasingFunctions.Linear).OnEnd((tween)=> { MoveToNextPoint(_player, _path, _tweener); });
+            }
+        }
+
+        private void DrawFrontendField(int[,] _frontendField, SpriteBatch _spriteBatch){
+            for (var i = 0; i < Width; i++)
             {
-                if (point.X < 0 || point.X >= _field.GetLength(0))
-                    continue;
-                if (point.Y < 0 || point.Y >= _field.GetLength(1))
-                    continue;
-                if ((_field[point.X, point.Y] != 0) && (_field[point.X, point.Y] != 1))
-                    continue;
+                for (var j = 0; j < Height; j++)
+                {
+                    var offsetPosition = GetOffsetPosition(i, j);
 
-                var neighbourNode = new PathNode(point, _node.G + GetPathToNeighbourLength(), GetPointsPathLength(point, _goal), _node);
+                    //Draw cells
+                    if(_frontendField[i,j] > 0){
+                        _spriteBatch.DrawPoint(offsetPosition.ToVector2(), Color.White, Resolution);
+                    }
+                    else{
+                        _spriteBatch.DrawPoint(offsetPosition.ToVector2(), Color.IndianRed, Resolution);
+                    }
+                }
+            }
+        }
 
-                neighbours.Add(neighbourNode);
+        private void DrawBackendField(BoundingRectangle[,] _backendField, int[,] _frontendField, SpriteBatch _spriteBatch){
+            for (var i = 0; i < Width; i++)
+            {
+                for (var j = 0; j < Height; j++)
+                {
+                    var rect = _backendField[i, j];
+                    var fieldValue = _frontendField[i, j];
+
+                    if(rect.Contains(MouseExtended.GetState().Position) && fieldValue == 1)
+                        _spriteBatch.DrawRectangle(rect, Color.Gray, Resolution);
+
+                    //Draw cells strokes
+                    _spriteBatch.DrawRectangle(rect, Color.Black, .5f);
+                }
+            }
+        }
+
+        private void DrawPlayer(Player _player, SpriteBatch _spriteBatch){
+            _spriteBatch.DrawPoint(_player.Position.X*Resolution + Offset.X, _player.Position.Y*Resolution + Offset.Y, Color.Blue, Resolution);
+        }
+
+        private void DrawPath(List<Point> _path, SpriteBatch _spriteBatch){
+            foreach (var point in _path)
+            {
+                _spriteBatch.DrawPoint(point.X*Resolution + Offset.X, point.Y*Resolution + Offset.Y, Color.Green, Resolution/2);
+            }
+        }
+        
+        private void FillFrontendField(int[,] _frontendField){
+            List<int> matchingWalls = new List<int>();
+            Random random = new Random();
+
+            //fill every cell with 1
+            for (var i = 0; i < Width; i++)
+            {
+                for (var j = 0; j < Height; j++)
+                {
+                    _frontendField[i,j] = 1;
+                }
             }
 
-            return neighbours;
+            //settle walls
+            for (var i = 1; i < Width-1; i++)
+            {
+                if(i%3==0) continue;
+
+                for (var j = 1; j < Height-1; j++)
+                {
+                    if(j%5==0) continue;
+
+                    if(matchingWalls.Count > 4){
+                        matchingWalls.Clear();
+                        continue;
+                    }
+
+                    var randomInt = random.Next(2);
+                    _frontendField[i,j] = randomInt;
+
+                    if(randomInt > 0){
+                        matchingWalls.Clear();
+                    }
+                    else{
+                        matchingWalls.Add(randomInt);
+                    }
+                }
+            }
         }
 
-        private static int GetPointsPathLength(Point _from, Point _to){
-            return _from.X - _to.X + _from.Y + _to.Y;
+        private void FillBackendField(BoundingRectangle[,] _backendField)
+        {
+            for (var i = 0; i < Width; i++)
+            {
+                for (var j = 0; j < Height; j++)
+                {
+                    var offsetPosition = GetOffsetPosition(i, j);
+                    _backendField[i, j] = new BoundingRectangle(offsetPosition, new Size2(Resolution/2, Resolution/2));
+                }
+            }
         }
 
-        private static List<Point> GetPathToNode(PathNode _node){
-            List<Point> finalPath = new List<Point>();
-            var currentNode = _node;
+        private void SetPlayer(int[,] _frontendField, Player _player){
+            bool positionFound = false;
+            Random random = new Random();
 
-            while(currentNode != null){
-                finalPath.Add(currentNode.Position);
-                currentNode = currentNode.CameFrom;
+            while(!positionFound){
+                var x = random.Next(0, Width);
+                var y = random.Next(0, Height);
+                var result = _frontendField[x,y];
+
+                if(result > 0){
+                    _player.Move(new Point(x,y));
+                    positionFound = true;
+                }
+            }
+        }
+
+        private Point GetOffsetPosition(Point _position){
+            return new Point(_position.X * Resolution, _position.Y * Resolution) + Offset;
+        }
+
+        private Point GetOffsetPosition(int _x, int _y){
+            return new Point(_x * Resolution, _y * Resolution) + Offset;
+        }
+
+        class Player{
+            public Vector2 Position { get; set; }
+            public float Speed { get; private set; }
+
+            public Player(Point _position, float _speed){
+                Position = _position.ToVector2();
+                Speed = _speed;
             }
 
-            finalPath.Reverse();
-
-            return finalPath;
-        }
-
-        private static int GetPathToNeighbourLength(){
-            return 1;
+            public void Move(Point _newPosition){
+                Position = _newPosition.ToVector2();
+            }
         }
     }
 }
