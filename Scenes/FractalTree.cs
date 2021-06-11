@@ -53,20 +53,16 @@ namespace MathRoom.Scenes
             if (a > 2)
             {
 
-                a *= 0.7f; //Меняем параметр a
+                a *= 0.7f;
  
-                //Считаем координаты для вершины-ребенка
                 float xnew = MathF.Round(x + a * MathF.Cos(Angle)),
                         ynew = MathF.Round(y - a * MathF.Sin(Angle));
 
-                //Рисуем ветку
                 _spriteBatch.DrawLine(x, y, xnew, ynew, Color.White, 2);
  
-                //Переприсваеваем координаты
                 x = xnew;
                 y = ynew;
  
-                //Вызываем рекурсивную функцию для левого и правого ребенка
                 DrawTree(x, y, a, Angle + Ang1, _spriteBatch);
                 DrawTree(x, y, a, Angle - Ang2, _spriteBatch);
             }
