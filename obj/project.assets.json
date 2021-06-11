@@ -404,6 +404,18 @@
           "lib/netstandard2.0/MonoGame.Extended.Graphics.dll": {}
         }
       },
+      "MonoGame.Extended.Input/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "MonoGame.Extended": "3.8.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MonoGame.Extended.Input.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MonoGame.Extended.Input.dll": {}
+        }
+      },
       "MonoGame.Framework.WindowsDX/3.8.0.1641": {
         "type": "package",
         "dependencies": {
@@ -2882,6 +2894,18 @@
         "lib/netstandard2.0/MonoGame.Extended.Graphics.dll",
         "monogame.extended.graphics.3.8.0.nupkg.sha512",
         "monogame.extended.graphics.nuspec"
+      ]
+    },
+    "MonoGame.Extended.Input/3.8.0": {
+      "sha512": "90RtzI6N+RCGHolI/yTwGT47vqSyr+IEe+yKxzm4/euc8rDVnbAwz4lRifkAEdHx29X3apD0Ui5ve0C/7yO7wQ==",
+      "type": "package",
+      "path": "monogame.extended.input/3.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MonoGame.Extended.Input.dll",
+        "monogame.extended.input.3.8.0.nupkg.sha512",
+        "monogame.extended.input.nuspec"
       ]
     },
     "MonoGame.Framework.WindowsDX/3.8.0.1641": {
@@ -7552,6 +7576,7 @@
       "MonoGame.Content.Builder.Task >= 3.8.0.1641",
       "MonoGame.Extended >= 3.8.0",
       "MonoGame.Extended.Graphics >= 3.8.0",
+      "MonoGame.Extended.Input >= 3.8.0",
       "MonoGame.Framework.WindowsDX >= 3.8.0.1641"
     ]
   },
@@ -7602,6 +7627,10 @@
             "target": "Package",
             "version": "[3.8.0, )"
           },
+          "MonoGame.Extended.Input": {
+            "target": "Package",
+            "version": "[3.8.0, )"
+          },
           "MonoGame.Framework.WindowsDX": {
             "target": "Package",
             "version": "[3.8.0.1641, )"
@@ -7620,6 +7649,9 @@
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.409\\RuntimeIdentifierGraph.json"

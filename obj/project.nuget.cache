@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "A106I9uvHP/9yddsZMtWiAu0lR8ziIXge7gjt/6ePBUsoD2xXev20WZynT+bP2B12T2WRQdtKbAq4Z0KQJk1QQ==",
+  "dgSpecHash": "5TxrufkkKNozBDpr8Hhq3dvGaL1srISujqScCPpXyw9SjLKjxaOWkn4j5h1bN1cFhRxbc1sP6ubI/Vt3S16CnA==",
   "success": true,
   "projectFilePath": "E:\\Profiles\\v.kruglyakov\\Desktop\\MathRoom\\MathRoom.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
     "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.extended\\3.8.0\\monogame.extended.3.8.0.nupkg.sha512",
     "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.extended.graphics\\3.8.0\\monogame.extended.graphics.3.8.0.nupkg.sha512",
+    "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.extended.input\\3.8.0\\monogame.extended.input.3.8.0.nupkg.sha512",
     "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\monogame.framework.windowsdx\\3.8.0.1641\\monogame.framework.windowsdx.3.8.0.1641.nupkg.sha512",
     "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
     "E:\\Profiles\\v.kruglyakov\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",

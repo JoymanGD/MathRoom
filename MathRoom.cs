@@ -31,10 +31,10 @@ namespace MathRoom
         protected override void Initialize()
         {
             // set new scenes here
-            SceneManager = new DefaultSceneManager(new List<IScene>{ 
-                new DoublePendulum(),
-                new Life()
-            });
+            SceneManager = new DefaultSceneManager();
+            SceneManager.AddScene<DoublePendulum>();
+            SceneManager.AddScene<Life>();
+            SceneManager.AddScene<FractalTree>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 

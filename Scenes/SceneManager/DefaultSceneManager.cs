@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Input;
 using MathRoom.Helpers;
 
 namespace MathRoom.Scenes.SceneManager
@@ -20,7 +21,6 @@ namespace MathRoom.Scenes.SceneManager
             
             foreach (var item in _startScenes)
             {
-                item.Initialize(index);
                 Scenes.Add(item.GetType(), item);
                 
                 if(!firstScene){
@@ -42,13 +42,14 @@ namespace MathRoom.Scenes.SceneManager
         public void Update(GameTime _gameTime){
             CurrentScene?.Update(_gameTime);
 
-            if(Keyboard.GetState().IsKeyDown(Keys.Right)){
+            var keyState = KeyboardExtended.GetState();
+            if(keyState.WasKeyJustDown(Keys.Right)){
                 NextScene();
             }
-            else if(Keyboard.GetState().IsKeyDown(Keys.Left)){
+            else if(keyState.WasKeyJustDown(Keys.Left)){
                 PreviousScene();
             }
-            else if(Keyboard.GetState().IsKeyDown(Keys.R)){
+            else if(keyState.WasKeyJustDown(Keys.R)){
                 CurrentScene.Reset();
             }
         }
@@ -56,12 +57,20 @@ namespace MathRoom.Scenes.SceneManager
         public void Draw(SpriteBatch _spriteBatch){
             CurrentScene?.Draw(_spriteBatch);
 
-            Drawer.DrawString(_spriteBatch, "Current scene: " + CurrentScene.Name + "\nNext scene: RightArrow\nPrevious scene: LeftArrow\nReset: R", new Vector2(20,20), Color.Red);
+            Drawer.DrawString(_spriteBatch, "Current scene: " + CurrentScene.Name + "\nNext scene: RightArrow\nPrevious scene: LeftArrow\nReset: R\n\n" + CurrentScene.AdditionalInfo, new Vector2(20,20), Color.Red);
+        }
+
+        public void AddScene<T>() where T:IScene{
+            var newScene = Activator.CreateInstance(typeof(T), new object[]{typeof(T).Name, Scenes.Count-1}) as IScene;
+            Scenes.Add(typeof(T), newScene);
+            
+            if(CurrentScene == null) ChangeCurrentScene(newScene);
         }
 
         public void AddScene(IScene _scene){
-            _scene.Initialize(Scenes.Count-1);
             Scenes.Add(_scene.GetType(), _scene);
+
+            if(CurrentScene == null) ChangeCurrentScene(_scene);
         }
 
         public void RemoveScene<T>() where T:IScene{
@@ -74,7 +83,13 @@ namespace MathRoom.Scenes.SceneManager
         }
 
         public void ChangeCurrentScene(IScene _scene){
-            CurrentScene = _scene;
+            if(_scene != CurrentScene){
+                CurrentScene = _scene;
+
+                if(!_scene.Initialized){
+                    _scene.Initialize();
+                }
+            }
         }
 
         public void NextScene(){
@@ -84,7 +99,7 @@ namespace MathRoom.Scenes.SceneManager
 
             var nextScene = Scenes.FirstOrDefault(x => x.Value.ID == nextID).Value;
 
-            if(nextScene != null) CurrentScene = nextScene;
+            if(nextScene != null) ChangeCurrentScene(nextScene);
         }
 
         public void PreviousScene(){
@@ -92,9 +107,9 @@ namespace MathRoom.Scenes.SceneManager
             
             var nextID = CurrentScene.ID - 1;
 
-            var nextScene = Scenes.FirstOrDefault(x => x.Value.ID == nextID).Value;
+            var previousScene = Scenes.FirstOrDefault(x => x.Value.ID == nextID).Value;
 
-            if(nextScene != null) CurrentScene = nextScene;
+            if(previousScene != null) ChangeCurrentScene(previousScene);
         }
     }
 }

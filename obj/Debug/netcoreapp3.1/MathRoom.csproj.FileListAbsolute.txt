@@ -65,3 +65,4 @@ E:\Profiles\v.kruglyakov\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\rhel-
 E:\Profiles\v.kruglyakov\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
 E:\Profiles\v.kruglyakov\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
 E:\Profiles\v.kruglyakov\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
+E:\Profiles\v.kruglyakov\Desktop\MathRoom\bin\Debug\netcoreapp3.1\MonoGame.Extended.Input.dll

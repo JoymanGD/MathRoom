@@ -7,9 +7,6 @@ namespace MathRoom.Scenes
 {
     public class Life : IScene
     {
-        public int ID { get; set; }
-        public string Name { get; } = "Life";
-
         private GraphicsDeviceManager Graphics;
         private GraphicsDevice GraphicsDevice;
 
@@ -23,14 +20,10 @@ namespace MathRoom.Scenes
         int[,] Grid;
         #endregion
 
-        public void Dispose()
-        {
-            
-        }
+        public Life(string _name, int _id) : base(_name, _id){}
 
-        public void Initialize(int _sceneID)
+        public override void Initialize()
         {
-            ID = _sceneID;
             Graphics = MathRoom.Instance.Graphics;
             GraphicsDevice = MathRoom.Instance.GraphicsDevice;
 
@@ -40,6 +33,8 @@ namespace MathRoom.Scenes
             Grid = new int[cols, rows];
 
             FillGridRandomly();
+            
+            base.Initialize();
         }
 
         private void FillGridRandomly(){
@@ -53,7 +48,7 @@ namespace MathRoom.Scenes
             }
         }
 
-        public void Update(GameTime _gameTime)
+        public override void Update(GameTime _gameTime)
         {
             var nextGrid = new int[cols, rows];
 
@@ -83,7 +78,7 @@ namespace MathRoom.Scenes
             Grid = nextGrid;
         }
         
-        public void Draw(SpriteBatch _spriteBatch)
+        public override void Draw(SpriteBatch _spriteBatch)
         {
             GraphicsDevice.Clear(Color.Black);
 
@@ -119,7 +114,7 @@ namespace MathRoom.Scenes
             return sum;
         }
 
-        public void Reset()
+        public override void Reset()
         {
             FillGridRandomly();
         }

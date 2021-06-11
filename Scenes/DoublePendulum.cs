@@ -1,16 +1,12 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
-using MonoGame.Extended.Shapes;
 
 namespace MathRoom.Scenes
 {
     public class DoublePendulum : IScene
     {
-        public int ID { get; set; }
-        public string Name { get; } = "Double pendulum";
         private GraphicsDevice GraphicsDevice;
         private GraphicsDeviceManager Graphics;
         private SpriteBatch TrailSpriteBatch;
@@ -41,9 +37,10 @@ namespace MathRoom.Scenes
         const float speedModifier = 0.05f;
         #endregion
 
-        public void Initialize(int _sceneID)
+        public DoublePendulum(string _name, int _id) : base(_name, _id){}
+
+        public override void Initialize()
         {
-            ID = _sceneID;
             GraphicsDevice = MathRoom.Instance.GraphicsDevice;
             Graphics = MathRoom.Instance.Graphics;
             TrailSpriteBatch = new SpriteBatch(GraphicsDevice);
@@ -51,6 +48,8 @@ namespace MathRoom.Scenes
             height = Graphics.PreferredBackBufferHeight;
             TrailRenderTarget = GetRenderTarget();
             RandomizeAngles();
+            
+            base.Initialize();
         }
 
         RenderTarget2D GetRenderTarget(){
@@ -69,7 +68,7 @@ namespace MathRoom.Scenes
             a2 = GetRandomAngle();
         }
 
-        public void Update(GameTime _gameTime)
+        public override void Update(GameTime _gameTime)
         {
             a1_a = (-g*(2*m1 + m2)*Sin(a1)-m2*g*Sin(a1-2*a2)-2*Sin(a1-a2)*m2*(a2_v*a2_v*l2+a1_v*a1_v*l1*Cos(a1-a2))) / (l1*(2*m1+m2-m2*Cos(2*a1-2*a2)));
             a2_a = (2*Sin(a1-a2)*(a1_v*a1_v*l1*(m1+m2)+g*(m1+m2)*Cos(a1)+a2_v*a2_v*l2*m2*Cos(a1-a2))) / (l2*(2*m1+m2-m2*Cos(2*a1-2*a2)));
@@ -82,7 +81,7 @@ namespace MathRoom.Scenes
             p2 = new Vector2(p1.X + l2 * MathF.Sin(a2), p1.Y + l2 * MathF.Cos(a2));
         }
 
-        public void Draw(SpriteBatch _spriteBatch)
+        public override void Draw(SpriteBatch _spriteBatch)
         {
             GraphicsDevice.SetRenderTarget(TrailRenderTarget);
                 _spriteBatch.Begin(blendState: BlendState.AlphaBlend);
@@ -119,7 +118,7 @@ namespace MathRoom.Scenes
             return MathF.Cos(_value);
         }
         
-        public void Reset()
+        public override void Reset()
         {
             a1_v = 0;
             a2_v = 0;
@@ -133,8 +132,5 @@ namespace MathRoom.Scenes
             GraphicsDevice.Clear(Color.Black);
             GraphicsDevice.SetRenderTarget(null);
         }
-
-        public void Dispose(){}
-
     }
 }

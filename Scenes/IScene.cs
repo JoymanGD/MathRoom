@@ -5,14 +5,28 @@ using MonoGame.Framework;
 
 namespace MathRoom.Scenes
 {
-    public interface IScene : IDisposable
+    public abstract class IScene : IDisposable
     {
-        int ID { get; set; }
-        string Name { get; }
+        public int ID { get; private set; }
+        public string Name { get; private set; }
+        public bool Initialized { get; private set; } = false;
+        public string AdditionalInfo { get; protected set; }
 
-        void Reset();
-        void Initialize(int _sceneID);
-        void Update(GameTime _gameTime);
-        void Draw(SpriteBatch _spriteBatch);
+        public IScene(string _name, int _id){
+            Name = _name;
+            ID = _id;
+        }
+
+        public virtual void Initialize(){
+            Initialized = true;
+        }
+
+        public virtual void Dispose(){}
+
+        public virtual void Reset(){}
+
+        public virtual void Update(GameTime _gameTime){}
+
+        public virtual void Draw(SpriteBatch _spriteBatch){}
     }
 }
