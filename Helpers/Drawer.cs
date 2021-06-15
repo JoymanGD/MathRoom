@@ -15,7 +15,7 @@ namespace MathRoom.Helpers
 
         public static void DrawString(SpriteBatch _spriteBatch, string _text, Vector2 _position, Color _color){
             WrapDrawing(_spriteBatch, ()=>{
-                _spriteBatch.DrawString(SpriteFont, _text, _position, _color);
+                if(_text != null) _spriteBatch.DrawString(SpriteFont, _text, _position, _color);
             });
         }
 

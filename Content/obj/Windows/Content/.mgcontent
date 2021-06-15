@@ -4,7 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/Profiles/v.kruglyakov/Desktop/MathRoom/Content/Fonts/Default.spritefont</File>
+    <File>C:/Users/UserName/Desktop/MathRoom/Content/Fonts/Default.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

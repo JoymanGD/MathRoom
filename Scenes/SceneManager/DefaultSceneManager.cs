@@ -59,10 +59,13 @@ namespace MathRoom.Scenes.SceneManager
 
             Drawer.DrawString(_spriteBatch, "Current scene: " + 
                                             CurrentScene.Name + 
-                                            "\nNext scene: RightArrow\nPrevious scene: LeftArrow\nReset: R\n\n" + 
-                                            CurrentScene.AdditionalInfo,
+                                            "\nNext scene: RightArrow\nPrevious scene: LeftArrow\nReset: R\n\n",
                                                                                         
                                             new Vector2(20,20), Color.Yellow);
+            
+            Drawer.DrawString(_spriteBatch, CurrentScene.AdditionalInfo,
+                                                                                        
+                                            new Vector2(20,110), Color.Cyan);
         }
 
         public void AddScene<T>() where T:IScene{
