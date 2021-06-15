@@ -7,8 +7,6 @@ namespace MathRoom.Scenes
 {
     public class DoublePendulum : IScene
     {
-        private GraphicsDevice GraphicsDevice;
-        private GraphicsDeviceManager Graphics;
         private SpriteBatch TrailSpriteBatch;
         private RenderTarget2D TrailRenderTarget;
 
@@ -39,8 +37,6 @@ namespace MathRoom.Scenes
 
         public override void Initialize()
         {
-            GraphicsDevice = MathRoom.Instance.GraphicsDevice;
-            Graphics = MathRoom.Instance.Graphics;
             TrailSpriteBatch = new SpriteBatch(GraphicsDevice);
             width = Graphics.PreferredBackBufferWidth;
             height = Graphics.PreferredBackBufferHeight;

@@ -9,7 +9,6 @@ namespace MathRoom.Scenes
 {
     public class FractalTree : IScene
     {
-        GraphicsDevice GraphicsDevice;
         private Vector2 RootNode;
         public float Angle = MathF.PI / 2; //Угол поворота на 90 градусов
         public float Ang1 = MathF.PI / 4;  //Угол поворота на 45 градусов
@@ -17,8 +16,6 @@ namespace MathRoom.Scenes
 
         public override void Initialize()
         {
-            GraphicsDevice = MathRoom.Instance.GraphicsDevice;
-
             RootNode = new Vector2(400, 450);
             
             InitializeTree();

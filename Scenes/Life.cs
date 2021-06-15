@@ -7,8 +7,6 @@ namespace MathRoom.Scenes
 {
     public class Life : IScene
     {
-        private GraphicsDeviceManager Graphics;
-        private GraphicsDevice GraphicsDevice;
 
         #region MathPart
         //scalable
@@ -22,9 +20,6 @@ namespace MathRoom.Scenes
 
         public override void Initialize()
         {
-            Graphics = MathRoom.Instance.Graphics;
-            GraphicsDevice = MathRoom.Instance.GraphicsDevice;
-
             cols = Graphics.PreferredBackBufferWidth / resolution;
             rows = Graphics.PreferredBackBufferHeight / resolution;
 

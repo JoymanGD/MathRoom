@@ -12,8 +12,6 @@ namespace MathRoom.Scenes
 {
     public class AStar : IScene
     {
-        GraphicsDevice GraphicsDevice;
-        GraphicsDeviceManager Graphics;
         Tweener Tweener;
         const int Width = 30;
         const int Height = 30;
@@ -27,8 +25,6 @@ namespace MathRoom.Scenes
         public override void Initialize()
         {
             AdditionalInfo = "Move to point: LMB";
-            GraphicsDevice = MathRoom.Instance.GraphicsDevice;
-            Graphics = MathRoom.Instance.Graphics;
             Tweener = new Tweener();
 
             Resolution = Graphics.PreferredBackBufferHeight/ (int)(Height*1.1f);

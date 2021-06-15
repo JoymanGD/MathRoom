@@ -11,6 +11,13 @@ namespace MathRoom.Scenes
         public string Name { get; private set; }
         public bool Initialized { get; private set; } = false;
         public string AdditionalInfo { get; protected set; }
+        protected static GraphicsDevice GraphicsDevice { get; private set; }
+        protected static GraphicsDeviceManager Graphics { get; private set; }
+
+        static IScene(){
+            GraphicsDevice = MathRoom.Instance.GraphicsDevice;
+            Graphics = MathRoom.Instance.Graphics;
+        }
 
         public IScene(){
             Name = GetName();

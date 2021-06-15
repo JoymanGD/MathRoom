@@ -9,12 +9,9 @@ namespace MathRoom.Scenes
 {
     public class Ballistic : IScene
     {
-        GraphicsDevice GraphicsDevice;
 
         public override void Initialize()
         {
-            GraphicsDevice = MathRoom.Instance.GraphicsDevice;
-                        
             
             base.Initialize();
         }
