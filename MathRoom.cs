@@ -13,7 +13,7 @@ namespace MathRoom
     {
         public GraphicsDeviceManager Graphics;
         private SpriteBatch SpriteBatch;
-        private DefaultSceneManager SceneManager;
+        public DefaultSceneManager SceneManager { get; private set; }
 
         public MathRoom()
         {
@@ -36,6 +36,7 @@ namespace MathRoom
             SceneManager.AddScene<Life>();
             SceneManager.AddScene<FractalTree>();
             SceneManager.AddScene<AStar>();
+            SceneManager.AddScene<Ballistic>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 

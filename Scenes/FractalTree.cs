@@ -15,8 +15,6 @@ namespace MathRoom.Scenes
         public float Ang1 = MathF.PI / 4;  //Угол поворота на 45 градусов
         public float Ang2 = MathF.PI / 6;  //Угол поворота на 30 градусов
 
-        public FractalTree(string _name, int _id) : base(_name, _id){}
-
         public override void Initialize()
         {
             GraphicsDevice = MathRoom.Instance.GraphicsDevice;

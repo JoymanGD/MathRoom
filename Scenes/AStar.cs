@@ -24,8 +24,6 @@ namespace MathRoom.Scenes
         Point Offset;
         List<Point> Path;
 
-        public AStar(string _name, int _id) : base(_name, _id){}
-
         public override void Initialize()
         {
             AdditionalInfo = "Move to point: LMB";

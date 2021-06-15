@@ -37,8 +37,6 @@ namespace MathRoom.Scenes
         const float speedModifier = 0.05f;
         #endregion
 
-        public DoublePendulum(string _name, int _id) : base(_name, _id){}
-
         public override void Initialize()
         {
             GraphicsDevice = MathRoom.Instance.GraphicsDevice;

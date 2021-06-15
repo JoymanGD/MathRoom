@@ -12,9 +12,14 @@ namespace MathRoom.Scenes
         public bool Initialized { get; private set; } = false;
         public string AdditionalInfo { get; protected set; }
 
-        public IScene(string _name, int _id){
-            Name = _name;
-            ID = _id;
+        public IScene(){
+            Name = GetName();
+            ID = MathRoom.Instance.SceneManager.Scenes.Count;
+        }
+
+        private string GetName(){
+            var stringParts = this.ToString().Split('.');
+            return stringParts[stringParts.Length-1];
         }
 
         public virtual void Initialize(){

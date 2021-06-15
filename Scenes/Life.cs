@@ -20,8 +20,6 @@ namespace MathRoom.Scenes
         int[,] Grid;
         #endregion
 
-        public Life(string _name, int _id) : base(_name, _id){}
-
         public override void Initialize()
         {
             Graphics = MathRoom.Instance.Graphics;
