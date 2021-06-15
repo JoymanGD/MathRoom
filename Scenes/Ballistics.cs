@@ -68,7 +68,7 @@ namespace MathRoom.Scenes
             GraphicsDevice.Clear(Color.Black);
             _spriteBatch.Begin();
             _spriteBatch.DrawLine(FloorStart, FloorEnd, Color.White, 2); //floor
-            _spriteBatch.DrawRectangle(Cannon, CannonSize, Color.SeaGreen, CannonSize.Width);
+            _spriteBatch.DrawRectangle(Cannon, CannonSize, Color.SeaGreen, CannonSize.Width); //cannon
             _spriteBatch.End();
         }
 
