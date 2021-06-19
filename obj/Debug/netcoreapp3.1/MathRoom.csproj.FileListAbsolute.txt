@@ -82,3 +82,4 @@ C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\win7-x64\nat
 C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
 C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\MonoGame.Extended.Tweening.dll
 E:\Profiles\v.kruglyakov\Desktop\MathRoom\bin\Debug\netcoreapp3.1\MonoGame.Extended.Tweening.dll
+C:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\Content\Images\Cannon.xnb
