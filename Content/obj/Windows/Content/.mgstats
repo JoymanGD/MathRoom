@@ -1,3 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/UserName/Desktop/MathRoom/Content/Fonts/Default.spritefont","C:/Users/UserName/Desktop/MathRoom/Content/bin/Windows/Content/Fonts/Default.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.5343405
-"C:/Users/UserName/Desktop/MathRoom/Content/Images/Cannon.png","C:/Users/UserName/Desktop/MathRoom/Content/bin/Windows/Content/Images/Cannon.xnb","TextureProcessor","Texture2DContent",5088,46165,0.3181578
+"C:/Users/UserName/Desktop/MathRoom/Content/Fonts/Default.spritefont","C:/Users/UserName/Desktop/MathRoom/Content/bin/Windows/Content/Fonts/Default.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.4594376
+"C:/Users/UserName/Desktop/MathRoom/Content/Images/Cannon.png","C:/Users/UserName/Desktop/MathRoom/Content/bin/Windows/Content/Images/Cannon.xnb","TextureProcessor","Texture2DContent",5088,46165,0.0166295

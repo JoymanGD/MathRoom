@@ -16,7 +16,7 @@ namespace MathRoom.Scenes
         private float ParabolaHeight = 200;
         private float FloorHeight = 50;
         private Vector2 CannonPosition = new Vector2(40, 0);
-        private float CannonMovingSpeed = 5;
+        private float CannonMovingSpeed = 8;
         private float CannonRotation = 0;
         private Vector2 CannonOffset;
         private Vector2 BallPosition = new Vector2(40, 0);
@@ -76,7 +76,7 @@ namespace MathRoom.Scenes
             }
 
             if(mouseState.DeltaScrollWheelValue != 0){
-                CannonMovingSpeed = Math.Clamp(CannonMovingSpeed - mouseState.DeltaScrollWheelValue * .001f, 0, 10);
+                ParabolaHeight = Math.Clamp(ParabolaHeight - mouseState.DeltaScrollWheelValue * .1f, 50, 400);
             }
 
             Rotate(mouseState);
@@ -115,7 +115,7 @@ namespace MathRoom.Scenes
                 BallPosition = Finish;
             }
 
-            AdditionalInfo = "Move cannon: A-D\nChange cannon moving speed: MouseWheel (" + MathF.Round(CannonMovingSpeed, 3) + ")\nShoot: LMB";
+            AdditionalInfo = "Move cannon: A-D\nChange height: MouseWheel (" + MathF.Round(ParabolaHeight, 3) + ")\nShoot: LMB";
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
