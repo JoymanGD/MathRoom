@@ -4,8 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Анастасия/Desktop/MathRoom/Content/Fonts/Default.spritefont</File>
-    <File>C:/Users/Анастасия/Desktop/MathRoom/Content/Images/Cannon.png</File>
+    <File>C:/Users/UserName/Desktop/MathRoom/Content/Fonts/Default.spritefont</File>
+    <File>C:/Users/UserName/Desktop/MathRoom/Content/Images/Cannon.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

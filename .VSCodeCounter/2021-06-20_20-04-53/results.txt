@@ -1,0 +1,64 @@
+Date : 2021-06-20 20:04:53
+Directory : c:\Users\UserName\Desktop\MathRoom
+Total : 26 files,  11575 codes, 34 comments, 309 blanks, all 11918 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| JSON     |          5 |     10,194 |          0 |          0 |     10,194 |
+| C#       |         18 |      1,212 |         34 |        308 |      1,554 |
+| XML      |          3 |        169 |          0 |          1 |        170 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                      | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                         |         26 |     11,575 |         34 |        309 |     11,918 |
+| Helpers                                                                                                   |          4 |        175 |          0 |         40 |        215 |
+| Helpers\PathFinding                                                                                       |          2 |         97 |          0 |         25 |        122 |
+| Helpers\Structs                                                                                           |          1 |         54 |          0 |         11 |         65 |
+| Patterns                                                                                                  |          1 |         17 |          0 |          2 |         19 |
+| Scenes                                                                                                    |          9 |        944 |         22 |        247 |      1,213 |
+| Scenes\SceneManager                                                                                       |          2 |        110 |          0 |         39 |        149 |
+| bin                                                                                                       |          3 |      2,452 |          0 |          0 |      2,452 |
+| bin\Debug                                                                                                 |          3 |      2,452 |          0 |          0 |      2,452 |
+| bin\Debug\netcoreapp3.1                                                                                   |          3 |      2,452 |          0 |          0 |      2,452 |
+| obj                                                                                                       |          6 |      7,888 |         11 |          6 |      7,905 |
+| obj\Debug                                                                                                 |          2 |         12 |         11 |          6 |         29 |
+| obj\Debug\netcoreapp3.1                                                                                   |          2 |         12 |         11 |          6 |         29 |
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                  | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\UserName\Desktop\MathRoom\Helpers\Drawer.cs                                                      | C#       |         24 |          0 |          4 |         28 |
+| c:\Users\UserName\Desktop\MathRoom\Helpers\PathFinding\PathFinder.cs                                      | C#       |         74 |          0 |         21 |         95 |
+| c:\Users\UserName\Desktop\MathRoom\Helpers\PathFinding\PathNode.cs                                        | C#       |         23 |          0 |          4 |         27 |
+| c:\Users\UserName\Desktop\MathRoom\Helpers\Structs\TreeNode.cs                                            | C#       |         54 |          0 |         11 |         65 |
+| c:\Users\UserName\Desktop\MathRoom\MathRoom.cs                                                            | C#       |         52 |          1 |         11 |         64 |
+| c:\Users\UserName\Desktop\MathRoom\MathRoom.csproj                                                        | XML      |         35 |          0 |          1 |         36 |
+| c:\Users\UserName\Desktop\MathRoom\Patterns\Singleton.cs                                                  | C#       |         17 |          0 |          2 |         19 |
+| c:\Users\UserName\Desktop\MathRoom\Program.cs                                                             | C#       |         12 |          0 |          2 |         14 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\AStar.cs                                                        | C#       |        200 |          4 |         39 |        243 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\Boids.cs                                                        | C#       |        208 |          3 |         70 |        281 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\DoublePendulum.cs                                               | C#       |        104 |          6 |         20 |        130 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\FractalTree.cs                                                  | C#       |         56 |          0 |         15 |         71 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\IScene.cs                                                       | C#       |         38 |          0 |          9 |         47 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\Life.cs                                                         | C#       |         90 |          5 |         20 |        115 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\Parabola.cs                                                     | C#       |        138 |          4 |         35 |        177 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\SceneManager\DefaultSceneManager.cs                             | C#       |         92 |          0 |         31 |        123 |
+| c:\Users\UserName\Desktop\MathRoom\Scenes\SceneManager\ISceneManager.cs                                   | C#       |         18 |          0 |          8 |         26 |
+| c:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\MathRoom.deps.json                             | JSON     |      2,431 |          0 |          0 |      2,431 |
+| c:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\MathRoom.runtimeconfig.dev.json                | JSON     |          9 |          0 |          0 |          9 |
+| c:\Users\UserName\Desktop\MathRoom\bin\Debug\netcoreapp3.1\MathRoom.runtimeconfig.json                    | JSON     |         12 |          0 |          0 |         12 |
+| c:\Users\UserName\Desktop\MathRoom\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs | C#       |          3 |          1 |          1 |          5 |
+| c:\Users\UserName\Desktop\MathRoom\obj\Debug\netcoreapp3.1\MathRoom.AssemblyInfo.cs                       | C#       |          9 |         10 |          5 |         24 |
+| c:\Users\UserName\Desktop\MathRoom\obj\MathRoom.csproj.nuget.dgspec.json                                  | JSON     |         94 |          0 |          0 |         94 |
+| c:\Users\UserName\Desktop\MathRoom\obj\MathRoom.csproj.nuget.g.props                                      | XML      |        124 |          0 |          0 |        124 |
+| c:\Users\UserName\Desktop\MathRoom\obj\MathRoom.csproj.nuget.g.targets                                    | XML      |         10 |          0 |          0 |         10 |
+| c:\Users\UserName\Desktop\MathRoom\obj\project.assets.json                                                | JSON     |      7,648 |          0 |          0 |      7,648 |
+| Total                                                                                                     |          |     11,575 |         34 |        309 |     11,918 |
++-----------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
