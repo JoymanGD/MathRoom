@@ -37,6 +37,7 @@ namespace MathRoom
             SceneManager.AddScene<FractalTree>();
             SceneManager.AddScene<AStar>();
             SceneManager.AddScene<Parabola>();
+            SceneManager.AddScene<Boids>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
